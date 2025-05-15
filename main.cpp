@@ -1,8 +1,8 @@
 #include <iostream>
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <thread>
-#include <string.h>
+#include <vector>
+#include <string>
+#include <algorithm>
+
 
 void receiveLoop(int sock) {
     char buffer[1024];
