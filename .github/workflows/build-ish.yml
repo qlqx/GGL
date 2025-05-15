@@ -1,0 +1,29 @@
+name: Build for iSH (x86 Linux)
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:   # 支持手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install 32-bit build dependencies
+      run: |
+        sudo apt update
+        sudo apt install g++ gcc-multilib -y
+
+    - name: Build 32-bit binary for iSH
+      run: |
+        g++ -m32 hello.cpp -o hello_ish -static
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ish-binary
+        path: hello_ish
