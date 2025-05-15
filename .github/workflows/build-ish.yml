@@ -23,7 +23,7 @@ jobs:
         g++ -m32 hello.cpp -o hello_ish -static
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ish-binary
         path: hello_ish
